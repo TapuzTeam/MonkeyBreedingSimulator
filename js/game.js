@@ -7,7 +7,54 @@ function openTab(tabName) {
       document.getElementsByClassName('tab-button')[i].classList.remove('bg-gold');
     }
     document.getElementById(tabName).style.display = "block";
-    console.log(ctx)
     document.getElementsByClassName('tab-button')[ctx].classList.add('bg-gold')
   }
   
+
+function monkey(){
+    this.type = 'basic';
+    
+}
+
+
+monkeys = []
+monkeys.push(new monkey())
+monkeys.push(new monkey())
+monkeys.push(new monkey())
+monkeys.push(new monkey())
+monkeys.push(new monkey())
+
+function createMonkeys(){
+
+}
+
+function createMonkeyDIVs(){
+  monkeys.forEach(monkey => {
+    let div = document.createElement('div');
+    div.classList.add('monkey');
+
+    $(div).draggable({ helper: 'clone',
+    start: function(){ //hide original when showing clone
+        $(this).hide();             
+    },
+    stop: function(){ //show original when hiding clone
+        $(this).show();
+    },
+      cursorAt: {top: 31, left: 31 },
+      containment: 'document',
+      scroll:false,
+      revert: false,
+      distance: 1
+
+   });
+
+    document.getElementsByClassName('monkeyColumn')[0].appendChild(div)
+  });
+}
+
+$( function() {
+  $( ".monkeyColumn" ).sortable();
+  $( ".monkeyColumn" ).disableSelection();
+} );
+
+createMonkeyDIVs()

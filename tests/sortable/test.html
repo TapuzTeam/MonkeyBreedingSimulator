@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Sortable - Display as grid</title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="test.css">
+  <style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
+  #sortable div { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 100px; height: 90px; font-size: 4em; text-align: center; }
+  </style>
+</head>
+<body>
+    <form method="post" action="">
+
+        <span>Drop:</span>
+        <div id="qselected">
+    
+        </div>
+    
+        <input type="submit" name="add" value="Opslaan" />
+    </form>
+    
+    <span>Drag:</span>
+    <div id="qlist">
+        <div class="qitem">
+            <span data-item="1" class="question">vraag1....</span>
+            <input type="hidden" value="1" name="question[]" />
+        </div>
+    
+        <div class="qitem">
+            <span data-item="2" class="question">vraag 2...</span>
+            <input type="hidden" value="2" name="question[]" />
+        </div>
+        <div class="qitem">
+            <span data-item="3" class="question">vraag 3...</span>
+            <input type="hidden" value="3" name="question[]" />
+        </div>
+        <div class="qitem">
+            <span data-item="4" class="question">vraag 4...</span>
+            <input type="hidden" value="4" name="question[]" />
+        </div>
+    </div>
+    
+ 
+</body>
+<script src="../../js/jquery-3.6.4.min.js"></script>
+     <script src="../../js/jquery-ui.min.js"></script>
+     <script src="test.js"></script>
+</html>

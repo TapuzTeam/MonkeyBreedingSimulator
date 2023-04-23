@@ -1,0 +1,10 @@
+.qitem {
+	border: 1px black solid;
+}
+
+
+#qselected, #qlist {
+	width: 300px;
+	height:200px;
+	border: 1px black solid;
+}

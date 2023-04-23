@@ -1,0 +1,44 @@
+#mydiv {
+    z-index: 9;
+    background-color: black;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    width: 64px;
+    height: 64px;
+    
+  }
+
+  .box{
+    z-index: 9;
+    background-color: black;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    width: 64px;
+    height: 64px;
+    
+  }
+  
+  #mydivheader {
+    padding: 10px;
+    cursor: move;
+    z-index: 10;
+    background-color: #2196F3;
+    color: #fff;
+  }
+
+.dad{
+    height: 300px;
+    background-color: #d3d3d3;
+    display: grid;
+    grid-template-columns: 65px 65px 65px 65px;
+    grid-auto-rows: 65px;;
+}
+
+.dropbox{
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    background-color:antiquewhite;
+    left: 50%;
+    top: 10%;
+}
