@@ -7,45 +7,38 @@
   <link rel="stylesheet" href="../../css/jquery-ui.css">
   <style>
   #sortable1 {
-    border: 1px solid #eee;
-    width: 142px;
-    min-height: 20px;
+    border: 1px solid black;
+    width: 66px;
+    min-height: 64px;
     list-style-type: none;
     margin: 0;
-    padding: 5px 0 0 0;
+    padding:  0;
     float: left;
-    margin-right: 10px;
+    margin-right: 100px;
   }
-  #sortable1 li, #sortable2 li {
-    margin: 0 5px 5px 5px;
-    padding: 5px;
-    font-size: 1.2em;
-    width: 120px;
+  #sortable1 div, #sortable2 div {
+    width: 64px;
+    height: 64px;
+  }
+
+  .ui-state-default:nth-child(2){
+    background: red;
   }
 
   #sortable2{
     list-style-type: none;
     margin: 0;
-    padding: 2px 0px 2px 0;
+    padding: 0;
     float: left;
     margin-right: 10px;
 
-    border: 1px solid #eee;
-    width: 142px;
-    height: 35px;
+    border: 1px solid black;
+    width: 66px;
+    height: 66px;
     overflow: hidden;
   }
 
-  .grass{
-    width: 450px;
-    height: 300px;
-    background-image: url(../../images/breeder.png);
-  }
-
-  .grass::before{
-    content: '';
-    background-image: url(../../images/grass.png);
-  }
+  
 
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -54,47 +47,77 @@
 $( document ).ready(function() {
 
     $( function() {
-        $( "#sortable1, #sortable2" ).sortable({
+        $( "#sortable1" ).sortable({
+            revert: false,
         connectWith: ".connectedSortable",
         receive: function( event, ui ) {
-        //console.log(ui.item)
+            removeDraggable($('.draggable, ui-draggable-dragging', $('#sortable1')), false)
+            $('.ui-state-default', '#sortable2').remove()
         },
         }).disableSelection();
     });
-    $('#sortable1, #sortable2').on('sortupdate',function(){
+    $('#sortable1').on('sortupdate',function(){
     //console.log('updated!');
 });
-$('#sortable2').on('sortreceive',function(event, ui){
-    console.log(ui.item[0])
-    moveDivs()
-    $('#sortable2')[0].appendChild(ui.item[0])
-})
+
 $( ".selector" ).sortable( "option", "tolerance", 'intersect' );
+
+
+
+$('#sortable2').droppable({
+    drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+            setTimeout(() => {
+                ctx = ui.draggable[0]
+                ctx.style.top = ''
+                ctx.style.left = ''
+                moveDivs()
+                ui.draggable.addClass('draggable')
+                $('#sortable2')[0].appendChild(ctx)
+
+                $(".draggable").draggable({
+                connectToSortable: '#sortable1',
+                cursor: 'pointer',
+                helper: 'clone',
+                revert: 'invalid',
+    });
+            }, 1);
+      }
+})
 });
 
 function moveDivs(){
-    var lis = $('#sortable2')[0].getElementsByTagName('li')
-    if (lis.length == 1){return;}
+    var lis = $('#sortable2')[0].getElementsByTagName('div')
+    if (lis.length == 0){return;}
     for( i=0; i <= lis.length; i++ ){
+        removeDraggable($('.ui-state-default', $('#sortable2')))
             $('#sortable1')[0].appendChild($('.ui-state-default', $('#sortable2'))[0])
-        }
-    
+        }  
 }
+
+function removeDraggable($item, needsDestroy=true){
+    $item.removeClass('draggable').removeClass('ui-draggable').removeClass('ui-draggable-handle')
+    if (needsDestroy){$item.draggable('destroy')}
+    console.log('destroyed')
+}
+
+
 
   </script>
 </head>
 <body>
  
-<ul id="sortable1" class="connectedSortable">
-  <li class="ui-state-default">Item 1</li>
-  <li class="ui-state-default">Item 2</li>
-  <li class="ui-state-default">Item 3</li>
-  <li class="ui-state-default">Item 4</li>
-  <li class="ui-state-default">Item 5</li>
-</ul>
+<div id="sortable1" class="connectedSortable">
+  <div class="ui-state-default">Item 1</div>
+  <div class="ui-state-default">Item 2</div>
+  <div class="ui-state-default">Item 3</div>
+  <div class="ui-state-default">Item 4</div>
+  <div class="ui-state-default">Item 5</div>
+</div>
  
-<ul id="sortable2" class="connectedSortable">
-</ul>
+<div id="sortable2" class="connectedSortable">
+</div>
  
 <div class="grass"></div> 
 

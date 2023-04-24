@@ -13,7 +13,6 @@ function openTab(tabName) {
 
 function monkey(){
     this.type = 'basic';
-    
 }
 
 
@@ -41,33 +40,72 @@ function createMonkeyDIVs(){
   monkeys.forEach(monkey => {
     let div = document.createElement('div');
     div.classList.add('monkey');
-/*
-    $(div).draggable({ helper: 'clone',
-    start: function(){ //hide original when showing clone
-        $(this).hide();             
-    },
-    stop: function(){ //show original when hiding clone
-        $(this).show();
-    },
-      cursorAt: {top: 31, left: 31 },
-      containment: 'document',
-      scroll:false,
-      revert: false,
-      distance: 1
-
-   });*/
-
     document.getElementsByClassName('monkeyColumn')[0].appendChild(div)
   });
 }
 
-$( function() {
-  $( ".monkeyColumn" ).sortable({
-    placeholder: "placeholder-test",
-    cursorAt: {top: 31, left: 31 },
-    tolerance: 'pointer',
+
+
+
+
+$( document ).ready(function() {
+
+  $( function() {
+      $( ".monkeyColumn" ).sortable({
+      connectWith: ".connectedSortable",
+      cursorAt: {top: 31, left: 31 },
+      revert: false,
+      tolerance: 'pointer',
+      receive: function( event, ui ) {
+        removeDraggable($('.draggable, ui-draggable-dragging', $('.monkeyColumn')), false)
+        ui.item.remove()
+    },
+  }).disableSelection();
   });
-  $( ".monkeyColumn" ).disableSelection();
-} );
+
+  $('.monkeyColumn, .breedingSlot').on('sortupdate',function(){
+  //console.log('updated!');
+});
+
+$('.breedingSlot').droppable({
+  drop: function( event, ui ) {
+    droppableOrigin = event.target
+    ctx = ui.draggable[0]
+    ctx.style.display = 'none'
+      $( this )
+        .addClass( "ui-state-highlight" )
+          setTimeout(() => {
+              ctx.style.display = ''
+              ctx.style.top = ''
+              ctx.style.left = ''
+              moveDivs()
+              ui.draggable.addClass('draggable')
+              droppableOrigin.appendChild(ctx)
+
+              $(".draggable").draggable({
+              connectToSortable: '.monkeyColumn',
+              cursor: 'pointer',
+              helper: 'clone',
+              zIndex: 1000,
+              revert: 'invalid',
+              appendTo: $('.monkeyColumn')
+            });}, 0);
+}})
+
+});
+
+function moveDivs(){
+  var lis = droppableOrigin.getElementsByTagName('div')
+  if (lis.length == 0){return;}
+  for( i=0; i <= lis.length; i++ ){
+      removeDraggable($('.monkey', droppableOrigin))
+      $('.monkey', droppableOrigin).appendTo($('.monkeyColumn')[0])      }  
+}
+
+function removeDraggable($item, needsDestroy=true){
+  $item.removeClass('draggable').removeClass('ui-draggable').removeClass('ui-draggable-handle')
+  if (needsDestroy){$item.draggable('destroy')}
+  console.log('destroyed')
+}
 
 createMonkeyDIVs()

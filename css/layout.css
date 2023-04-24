@@ -55,7 +55,6 @@ body{
     background-image: url(../images/monkey-basic.png);
     width: 64px;
     height: 64px;
-    margin: 1px;
 }
 
 .tab-bar{
@@ -83,19 +82,39 @@ body{
 .tab{
 }
 
+#breeding{
+    background-image:  url(../images/grass.png);
+    height: 100%;
+}
+
 .breeder{
     height: 300px;
     width: 450px;
-    background: gainsboro;
     margin: 0;
-    background-image: url('../images/breeder.png');
+    position: relative;
+    /*background-image:  url(../images/grass.png) ;*/
 }
 
 .breeder::before{
     content: '';
-    background-image: url(../images/grass.png);
+    background-image:url('../images/breeder.png');
     background-repeat: repeat;
-    position: absolute;
-    top:0;
-    left: 0;
+    width: 100%;
+    height: 100%;
+    display: inherit;
 }
+
+.breedingSlot{
+    width: 64px;
+    height: 64px;
+    background-color: green;
+    position: absolute;
+    left: 140px;
+    bottom: 18px;
+    overflow: hidden;
+}
+
+.breedingSlot:nth-child(2){
+    background: red;
+    left: 244px;
+  }
