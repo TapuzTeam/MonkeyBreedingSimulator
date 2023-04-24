@@ -3,49 +3,100 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Sortable - Display as grid</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="test.css">
+  <title>jQuery UI Sortable - Connect lists</title>
+  <link rel="stylesheet" href="../../css/jquery-ui.css">
   <style>
-  #sortable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
-  #sortable div { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 100px; height: 90px; font-size: 4em; text-align: center; }
+  #sortable1 {
+    border: 1px solid #eee;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+  }
+  #sortable1 li, #sortable2 li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 120px;
+  }
+
+  #sortable2{
+    list-style-type: none;
+    margin: 0;
+    padding: 2px 0px 2px 0;
+    float: left;
+    margin-right: 10px;
+
+    border: 1px solid #eee;
+    width: 142px;
+    height: 35px;
+    overflow: hidden;
+  }
+
+  .grass{
+    width: 450px;
+    height: 300px;
+    background-image: url(../../images/breeder.png);
+  }
+
+  .grass::before{
+    content: '';
+    background-image: url(../../images/grass.png);
+  }
+
   </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+$( document ).ready(function() {
+
+    $( function() {
+        $( "#sortable1, #sortable2" ).sortable({
+        connectWith: ".connectedSortable",
+        receive: function( event, ui ) {
+        //console.log(ui.item)
+        },
+        }).disableSelection();
+    });
+    $('#sortable1, #sortable2').on('sortupdate',function(){
+    //console.log('updated!');
+});
+$('#sortable2').on('sortreceive',function(event, ui){
+    console.log(ui.item[0])
+    moveDivs()
+    $('#sortable2')[0].appendChild(ui.item[0])
+})
+$( ".selector" ).sortable( "option", "tolerance", 'intersect' );
+});
+
+function moveDivs(){
+    var lis = $('#sortable2')[0].getElementsByTagName('li')
+    if (lis.length == 1){return;}
+    for( i=0; i <= lis.length; i++ ){
+            $('#sortable1')[0].appendChild($('.ui-state-default', $('#sortable2'))[0])
+        }
+    
+}
+
+  </script>
 </head>
 <body>
-    <form method="post" action="">
-
-        <span>Drop:</span>
-        <div id="qselected">
-    
-        </div>
-    
-        <input type="submit" name="add" value="Opslaan" />
-    </form>
-    
-    <span>Drag:</span>
-    <div id="qlist">
-        <div class="qitem">
-            <span data-item="1" class="question">vraag1....</span>
-            <input type="hidden" value="1" name="question[]" />
-        </div>
-    
-        <div class="qitem">
-            <span data-item="2" class="question">vraag 2...</span>
-            <input type="hidden" value="2" name="question[]" />
-        </div>
-        <div class="qitem">
-            <span data-item="3" class="question">vraag 3...</span>
-            <input type="hidden" value="3" name="question[]" />
-        </div>
-        <div class="qitem">
-            <span data-item="4" class="question">vraag 4...</span>
-            <input type="hidden" value="4" name="question[]" />
-        </div>
-    </div>
-    
  
+<ul id="sortable1" class="connectedSortable">
+  <li class="ui-state-default">Item 1</li>
+  <li class="ui-state-default">Item 2</li>
+  <li class="ui-state-default">Item 3</li>
+  <li class="ui-state-default">Item 4</li>
+  <li class="ui-state-default">Item 5</li>
+</ul>
+ 
+<ul id="sortable2" class="connectedSortable">
+</ul>
+ 
+<div class="grass"></div> 
+
 </body>
-<script src="../../js/jquery-3.6.4.min.js"></script>
-     <script src="../../js/jquery-ui.min.js"></script>
-     <script src="test.js"></script>
 </html>

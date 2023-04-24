@@ -41,6 +41,14 @@ body{
     display: none;
 }
 
+.placeholder-test{
+    margin-left: 1px;
+    margin-top: 1px;
+    border: 1px solid #dad55e;
+	background: #fffa90;
+	color: #777620;
+}
+
 .monkey{
     z-index: 10;
     background: green;
@@ -77,7 +85,17 @@ body{
 
 .breeder{
     height: 300px;
+    width: 450px;
     background: gainsboro;
-    width: 100%;
     margin: 0;
+    background-image: url('../images/breeder.png');
+}
+
+.breeder::before{
+    content: '';
+    background-image: url(../images/grass.png);
+    background-repeat: repeat;
+    position: absolute;
+    top:0;
+    left: 0;
 }

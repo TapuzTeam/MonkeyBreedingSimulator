@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-	$("#qselected").sortable();
-	$("#qselected").disableSelection();
+	$("#dropper").sortable();
+	$("#dropper").disableSelection();
 
 	$(".qitem").draggable({
 		containment : "#container",
@@ -9,7 +9,7 @@ $(document).ready(function() {
 		revert : 'invalid'
 	});
 
-	$("#qselected, #qlist").droppable({
+	$("#dropper, #sorter").droppable({
 		hoverClass : 'ui-state-highlight',
 		drop : function(ev, ui) {
 			$(ui.draggable).clone().appendTo(this);

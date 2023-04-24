@@ -23,6 +23,15 @@ monkeys.push(new monkey())
 monkeys.push(new monkey())
 monkeys.push(new monkey())
 monkeys.push(new monkey())
+monkeys.push(new monkey())
+monkeys.push(new monkey())
+monkeys.push(new monkey())
+monkeys.push(new monkey())
+monkeys.push(new monkey())
+monkeys.push(new monkey())
+monkeys.push(new monkey())
+monkeys.push(new monkey())
+
 
 function createMonkeys(){
 
@@ -32,7 +41,7 @@ function createMonkeyDIVs(){
   monkeys.forEach(monkey => {
     let div = document.createElement('div');
     div.classList.add('monkey');
-
+/*
     $(div).draggable({ helper: 'clone',
     start: function(){ //hide original when showing clone
         $(this).hide();             
@@ -46,14 +55,18 @@ function createMonkeyDIVs(){
       revert: false,
       distance: 1
 
-   });
+   });*/
 
     document.getElementsByClassName('monkeyColumn')[0].appendChild(div)
   });
 }
 
 $( function() {
-  $( ".monkeyColumn" ).sortable();
+  $( ".monkeyColumn" ).sortable({
+    placeholder: "placeholder-test",
+    cursorAt: {top: 31, left: 31 },
+    tolerance: 'pointer',
+  });
   $( ".monkeyColumn" ).disableSelection();
 } );
 
