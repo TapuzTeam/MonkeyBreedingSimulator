@@ -7,11 +7,34 @@ function setVar(variable, value, location=':root') {
     let r = document.querySelector(location);
   r.style.setProperty(variable, value);
 }
-scaleX = -1500
-scaleY = -2000
-$('.compendiumBackground').draggable({
-    containment: [scaleX, scaleY, 0, 0],
-    scroll: false
+let 
+setInterval(() => {
+  getNewDistances()
+}, interval);
+
+function getNewDistances(){
+  let compSize = [$('.compendium')[0].clientWidth/2, $('.compendium')[0].clientHeight/2]
+  let backgroundSize = [$('.compendiumBackground')[0].clientWidth, $('.compendiumBackground')[0].clientHeight]
+  
+  console.log(backgroundSize + ' bg')
+  console.log(compSize + ' comp')
+  console.log($( ".compendium" ).draggable( "option", 'containment'))
+
+  let compSizeX = compSize[0] * scale
+  maxDistanceX = backgroundSize[0] - compSizeX
+
+  let compSizeY = compSize[1] * scale
+  maxDistanceY = backgroundSize[1] - compSizeY
+
+  $( ".compendium" ).draggable( "option", 'containment', [ -compSize[0]*scale, -compSize[1]*scale, maxDistanceX, maxDistanceY,])
+}
+scaleX = -1200
+scaleY = -1550
+
+$('.compendium').draggable({
+  //containment: [-1200, -1550, 100, 100],
+  containment: 'parent',
+  scroll: false
 })
 
 $('.compendiumMonkey').draggable({
@@ -28,14 +51,9 @@ var scale = 1,
         parent = document.getElementsByClassName('compendiumBackground')[0]
 
       function setTransform() {
-        if (scale < 0.33){scale=(0.334898)} else if (scale > 3.58){scale = 3.5831807999999996}
 
         zoom.style.transform = " scale(" + scale + ")";
 
-        $( ".compendiumBackground" ).draggable( "option", "containment", [scaleX*scale*.75,scaleY*scale*.75, 0*scale, 0*scale]);
-        setVar('--CompendiumTop', (200*scale)+'px')
-        setVar('--CompendiumLeft', (200*scale)+'px')
-        //console.log($( ".compendiumBackground" ).draggable( "option", "containment"))
       }
 
       
@@ -45,10 +63,12 @@ var scale = 1,
         var xs = (e.clientX - pointX) / scale,
           ys = (e.clientY - pointY) / scale,
           delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
-        (delta > 0) ? (scale *= 1.2) : (scale /= 1.2);
+        (delta > 0) ? (scale += .200000) : (scale -= .200000);
+        scale = Math.round(scale*10)/10
         pointX = e.clientX - xs * scale;
         pointY = e.clientY - ys * scale;
-
+        if (scale < 0.4){scale=(0.4)} else if (scale > 3){scale = 3};
+        getNewDistances()
         setTransform();
       }
 

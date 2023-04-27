@@ -1,6 +1,6 @@
 .compendiumBackground{
-    width: 4000px;
-    height: 6000px;
+    width: 100vw;
+    height: 100vh;
     background-color: antiquewhite;
     background-image: url(../../images/compendium_background.png);
     background-size: 100% 100%;
@@ -11,8 +11,8 @@
 }
 .compendium{
     
-    width: 3000px;
-    height: 2500px;
+    width: 1000px;
+    height: 1000px;
     background: grey;
     background: rgba(168, 168, 168, 0.25);
     align-items: center;
@@ -22,8 +22,8 @@
 }
 
 .compendium .compendiumMonkey{
-    width:128px;
-    height: 128px;
+    width:0;
+    height: 0;
     background-color: antiquewhite;
     background-image: url(../../images/monkey-basic.png);
     background-size: 100%;
