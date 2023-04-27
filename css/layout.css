@@ -5,18 +5,7 @@ body{
 .gamePage{
     background-color: aliceblue;
     height: calc(100% - 52.5px);
-}
-.bg-purple {
-    background: rgb(48,0,50);
-}
-.bg-gray {
-    background: rgb(74,74,74);
-}
-.bg-blue {
-    background: rgb(50,101,196);
-}
-.bg-red {
-    background: rgb(196,50,53);
+    overflow: hidden;
 }
 
 .border-n{
@@ -24,37 +13,38 @@ body{
     border-bottom: none!important;
 }
 
-.bg-gold{
-    background-color:darkgoldenrod;
-}
 
 .monkeyColumn{
     display: grid;
     grid-template-columns: 65px 65px 65px 65px;
     grid-auto-rows: 65px;
-    padding: 20px;
+    padding: 27px;
     overflow-y: scroll;
     height: 100%;
+    background-image: url(../images/background.png);
+    background-size: 100% 100vh;
+    border: 3px solid black;
+    border-top: none;
+    border-bottom: none;
 }
 
-.monkeyColumn::-webkit-scrollbar{
-    display: none;
-}
 
-.placeholder-test{
-    margin-left: 1px;
-    margin-top: 1px;
-    border: 1px solid #dad55e;
-	background: #fffa90;
-	color: #777620;
-}
+
+
 
 .monkey{
-    z-index: 10;
     background: green;
-    background-image: url(../images/monkey-basic.png);
+    background-image: url(../images/monkeys.png);
     width: 64px;
     height: 64px;
+    position: initial;
+
+}
+
+.monkey:hover{
+    cursor:grab;
+    scale: 1.15;
+    image-rendering: pixelated;
 }
 
 .tab-bar{
@@ -85,6 +75,8 @@ body{
 #breeding{
     background-image:  url(../images/grass.png);
     height: 100%;
+    overflow: scroll;
+    background-attachment: local;
 }
 
 .breeder{
@@ -104,17 +96,46 @@ body{
     display: inherit;
 }
 
-.breedingSlot{
+.breeder .breedingSlot{
     width: 64px;
     height: 64px;
     background-color: green;
     position: absolute;
     left: 140px;
     bottom: 18px;
-    overflow: hidden;
 }
 
-.breedingSlot:nth-child(2){
+.breeder .breedingSlot:nth-child(2){
     background: red;
     left: 244px;
   }
+
+
+
+.widgets{
+    background: green;
+    width: 100%;
+}
+
+.widgets .widget {
+    width: 64px;
+    height: 64px;
+    background: grey;
+    
+}
+
+.widgets .widget:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+    image-rendering: pixelated;
+}
+
+.widget.settings{
+    background-image: url(../images/widget_icons.png);
+    background-position: -64px 0px;
+}
+
+.widget.compendium{
+    background-image: url(../images/widget_icons.png);
+    background-position: 0px 0px;
+}

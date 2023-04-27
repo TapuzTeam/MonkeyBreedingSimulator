@@ -1,0 +1,41 @@
+.compendiumBackground{
+    width: 4000px;
+    height: 6000px;
+    background-color: antiquewhite;
+    background-image: url(../../images/compendium_background.png);
+    background-size: 100% 100%;
+}
+:root{
+    --CompendiumLeft: 200px;
+    --CompendiumTop: 200px;
+}
+.compendium{
+    
+    width: 3000px;
+    height: 2500px;
+    background: grey;
+    background: rgba(168, 168, 168, 0.25);
+    align-items: center;
+    position: relative;
+    left: var(--CompendiumLeft);
+    top: var(--CompendiumTop);
+}
+
+.compendium .compendiumMonkey{
+    width:128px;
+    height: 128px;
+    background-color: antiquewhite;
+    background-image: url(../../images/monkey-basic.png);
+    background-size: 100%;
+    image-rendering: pixelated;
+}
+
+body{
+    overflow: hidden;
+}
+
+#zoom {
+    transform-origin: 0 0;
+    transform: scale(1) translate(0px, 0px);
+    cursor: grab;
+  }

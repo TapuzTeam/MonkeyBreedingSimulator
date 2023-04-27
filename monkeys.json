@@ -1,0 +1,92 @@
+{
+    "cosmic": {
+        "id": 64
+    },
+    "basic": {
+        "id": 0
+    },
+    "blue": {
+        "id": 1
+    },
+    "green": {
+        "id": 2
+    },
+    "yellow": {
+        "id": 3
+    },
+    "red": {
+        "id": 4
+    },
+    "orange": {
+        "id": 5
+    },
+    "purple": {
+        "id": 6
+    },
+    "old": {
+        "id": 7
+    },
+    "wise": {
+        "id": 8
+    },
+    "smart": {
+        "id": 9
+    },
+    "wizard": {
+        "id": 10
+    },
+    "devil": {
+        "id": 11
+    },
+    "angel": {
+        "id": 12
+    },
+    "yeti": {
+        "id": 13
+    },
+    "slime": {
+        "id": 14
+    },
+    "water": {
+        "id": 15
+    },
+    "ice": {
+        "id": 16
+    },
+    "earth": {
+        "id": 17
+    },
+    "fire": {
+        "id": 18
+    },
+    "lightning": {
+        "id": 19
+    },
+    "golden": {
+        "id": 20
+    },
+    "void": {
+        "id": 21
+    },
+    "shadow": {
+        "id": 22
+    },
+    "leaf": {
+        "id": 23
+    },
+    "jaded": {
+        "id": 24
+    },
+    "poison": {
+        "id": 25
+    },
+    "crystal": {
+        "id": 26
+    },
+    "ghost": {
+        "id": 27
+    },
+    "bubble": {
+        "id": 28
+    }
+}

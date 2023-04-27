@@ -39,7 +39,7 @@
                 <div class="text-white">
                     <div class="d-flex flex-column h-100 bg-gold">
                         <div class="tab-bar">
-                            <div class="tab-button " onclick="openTab('production')">London</div>
+                            <div class="tab-button" onclick="openTab('production')">London</div>
                             <div class="tab-button bg-gold" onclick="openTab('breeding')">Pens</div>
                             <div class="tab-button" onclick="openTab('Tokyo')">Tokyo</div>
                         </div>
@@ -53,6 +53,11 @@
                               <div class="breedingSlot"></div>
                               <div class="breedingSlot"></div>
                             </div>
+                            <div class="breeder">
+                              <div class="breedingSlot"></div>
+                              <div class="breedingSlot"></div>
+                            </div>
+                            
                         </div>
                         
                         <div id="Tokyo" class="tab" style="display:none">
@@ -62,7 +67,13 @@
                     </div>
                 </div>
               </div>
-              <div class="col-2 bg-gray"></div>
+              <div class="col-2 bg-gray p-0">
+                <div class="row widgets m-0">
+                  <div class="widget settings"></div>
+                  <div class="widget compendium"></div>
+                </div>
+                <div class="row inventory"></div>
+              </div>
             </div>
           </div>
    
