@@ -1,92 +1,150 @@
 {
     "cosmic": {
-        "id": 64
+        "spriteID": 64,
+        "monkeyID": "monkey_cosmic"
     },
     "basic": {
-        "id": 0
+        "spriteID": 0,
+        "monkeyID": "monkey_basic"
     },
     "blue": {
-        "id": 1
+        "spriteID": 1,
+        "monkeyID": "monkey_blue"
     },
     "green": {
-        "id": 2
+        "spriteID": 2,
+        "monkeyID": "monkey_green"
     },
     "yellow": {
-        "id": 3
+        "spriteID": 3,
+        "monkeyID": "monkey_yellow"
     },
     "red": {
-        "id": 4
+        "spriteID": 4,
+        "monkeyID": "monkey_red"
     },
     "orange": {
-        "id": 5
+        "spriteID": 5,
+        "monkeyID": "monkey_orange"
     },
     "purple": {
-        "id": 6
+        "spriteID": 6,
+        "monkeyID": "monkey_purple"
     },
     "old": {
-        "id": 7
+        "spriteID": 7,
+        "monkeyID": "monkey_old"
     },
     "wise": {
-        "id": 8
+        "spriteID": 8,
+        "monkeyID": "monkey_wise"
     },
     "smart": {
-        "id": 9
+        "spriteID": 9,
+        "monkeyID": "monkey_smart"
     },
     "wizard": {
-        "id": 10
+        "spriteID": 10,
+        "monkeyID": "monkey_wizard"
     },
     "devil": {
-        "id": 11
+        "spriteID": 11,
+        "monkeyID": "monkey_devil"
     },
     "angel": {
-        "id": 12
+        "spriteID": 12,
+        "monkeyID": "monkey_angel"
     },
     "yeti": {
-        "id": 13
+        "spriteID": 13,
+        "monkeyID": "monkey_yeti"
     },
     "slime": {
-        "id": 14
+        "spriteID": 14,
+        "monkeyID": "monkey_slime"
     },
     "water": {
-        "id": 15
+        "spriteID": 15,
+        "monkeyID": "monkey_water"
     },
     "ice": {
-        "id": 16
+        "spriteID": 16,
+        "monkeyID": "monkey_ice"
     },
     "earth": {
-        "id": 17
+        "spriteID": 17,
+        "monkeyID": "monkey_earth"
     },
     "fire": {
-        "id": 18
+        "spriteID": 18,
+        "monkeyID": "monkey_fire"
     },
     "lightning": {
-        "id": 19
+        "spriteID": 19,
+        "monkeyID": "monkey_lightning"
     },
     "golden": {
-        "id": 20
+        "spriteID": 20,
+        "monkeyID": "monkey_golden"
     },
     "void": {
-        "id": 21
+        "spriteID": 21,
+        "monkeyID": "monkey_void"
     },
     "shadow": {
-        "id": 22
+        "spriteID": 22,
+        "monkeyID": "monkey_shadow"
     },
     "leaf": {
-        "id": 23
+        "spriteID": 23,
+        "monkeyID": "monkey_leaf"
     },
     "jaded": {
-        "id": 24
+        "spriteID": 24,
+        "monkeyID": "monkey_jaded"
     },
     "poison": {
-        "id": 25
+        "spriteID": 25,
+        "monkeyID": "monkey_poison"
     },
     "crystal": {
-        "id": 26
+        "spriteID": 26,
+        "monkeyID": "monkey_crystal"
     },
     "ghost": {
-        "id": 27
+        "spriteID": 27,
+        "monkeyID": "monkey_ghost"
     },
     "bubble": {
-        "id": 28
+        "spriteID": 28,
+        "monkeyID": "monkey_bubble"
+    },
+    "plasma": {
+        "spriteID": 29,
+        "monkeyID": "monkey_plasma"
+    },
+    "mango": {
+        "spriteID": 30,
+        "monkeyID": "monkey_mango"
+    },
+    "rainbow": {
+        "spriteID": 31,
+        "monkeyID": "monkey_rainbow"
+    },
+    "egg": {
+        "spriteID": 32,
+        "monkeyID": "monkey_egg"
+    },
+    "monocle": {
+        "spriteID": 33,
+        "monkeyID": "monkey_monocle"
+    },
+    "thoughtless": {
+        "spriteID": 34,
+        "monkeyID": "monkey_thoughtless"
+    },
+    "allSeer": {
+        "spriteID": 35,
+        "monkeyID": "monkey_allseer"
     }
 }

@@ -1,7 +1,7 @@
 function openTab(tabName) {
     var i;
     var tabs = document.getElementsByClassName("tab");
-    var ctx = ['production','breeding','Tokyo'].indexOf(tabName)
+    var ctx = ['production','breeding','infusion'].indexOf(tabName)
     for (i = 0; i < tabs.length; i++) {
       tabs[i].style.display = "none";
       document.getElementsByClassName('tab-button')[i].classList.remove('bg-gold');
@@ -9,6 +9,17 @@ function openTab(tabName) {
     document.getElementById(tabName).style.display = "block";
     document.getElementsByClassName('tab-button')[ctx].classList.add('bg-gold')
   }
+
+function getVar(variable) {
+  let r = document.querySelector(':root');
+  let rs = getComputedStyle(r)
+  return rs.getPropertyValue(variable);
+}
+function setVar(variable, value, location=':root') {
+  let r = document.querySelector(location);
+  r.style.setProperty(variable, value);
+}
+
 
 initialize()
 function initialize(){
@@ -19,7 +30,41 @@ function initialize(){
   .then((response) => response.json())
   .then((json) => monkeysInfo = json);
   waitForJson()
+
+  //Compendium
+    scale = 1;
+    zoom = document.getElementsByClassName("compendium")[0];
+    parent = document.getElementsByClassName('compendiumBackground')[0]
+    
+    parent.onwheel = function (e) {
+      e.preventDefault();
+      var delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
+      (delta > 0) ? (scale += .2) : (scale -= .2);
+      scale = Math.round(scale*10)/10
+      if (scale < 0.4){scale=(0.4)} else if (scale > 3){scale = 3};
+      setTransform();
+    }
 } 
+
+function compendiumSwitch(option = 'open'){
+  if (option == 'open'){
+    $('body').css('overflow', 'hidden')
+    $('.gamePage').css('display', 'none')
+    $('.compendiumBackground').css('display', '');
+    
+  } else {
+    $('body').css('overflow', '')
+    $('.gamePage').css('display', '')
+    $('.compendiumBackground').css('display', 'none');
+    $('.compendium').css('top', -600).css('left', 0)
+    scale = 1;
+    setTransform()
+  }
+}
+
+function setTransform() {
+  zoom.style.transform = " scale(" + scale + ")";
+}
 
 //waits for monkeys.json to be loaded
 function waitForJson(){
@@ -41,7 +86,7 @@ function createMonkey(type){
 
 function createMonkeyDIV(monkey){
   let div = document.createElement('div');
-  let pos = monkeysInfo[monkey.type].id;
+  let pos = monkeysInfo[monkey.type].spriteID;
   let row = Math.floor(pos/32)
   let col = pos%32
 
@@ -85,6 +130,17 @@ $( document ).ready(function() {
     },
   }).disableSelection();
   });
+
+  //Compendium draggable
+  $('.compendium').draggable({
+    refreshPositions: true,
+    scroll: false
+  })
+  $('.compendiumMonkey').draggable({
+      containment: 'parent',
+      scroll: false
+  })
+
   $('.monkeyColumn, .breedingSlot').on('sortupdate',function(){
   //console.log('updated!');
 });
@@ -102,6 +158,7 @@ $('.breedingSlot').droppable({
               ui.draggable.addClass('draggable')
               ctx.css('position','inherit')
               $('.exists').remove()
+              console.log('removed exists')
               droppableOrigin.appendChild(ctx[0])
               $('.exists').removeClass('exists')
 
@@ -111,12 +168,19 @@ $('.breedingSlot').droppable({
               cursorAt: {top: 31, left: 31 },
               helper: 'clone',
               zIndex: 1000,
-              revert: 'invalid',
+              revert: function(is_valid_drop){
+                console.log(is_valid_drop);
+                if(!is_valid_drop){
+                  console.log("revert triggered");
+                  $(this).removeClass("exists");
+                  return true;
+               } else {
+               }
+              },
               containment: $('.gamePage'),
               scroll: false,
               appendTo: $('.monkeyColumn'),
               start: function(event, ui){
-                console.log('ass')
                 $(this).addClass('exists')
               },
               
@@ -124,13 +188,7 @@ $('.breedingSlot').droppable({
             console.log($('.exists'))
 
           }, 0);
-          
-
-}})
-
-
-
-});
+}})});
 
 function moveDivs(){
   var lis = droppableOrigin.getElementsByTagName('div')

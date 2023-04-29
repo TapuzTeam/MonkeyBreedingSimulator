@@ -5,29 +5,28 @@
     background-image: url(../../images/compendium_background.png);
     background-size: 100% 100%;
 }
-:root{
-    --CompendiumLeft: 200px;
-    --CompendiumTop: 200px;
-}
 .compendium{
     
-    width: 1000px;
-    height: 1000px;
+    width: 2000px;
+    height: 2000px;
     background: grey;
     background: rgba(168, 168, 168, 0.25);
     align-items: center;
     position: relative;
     left: var(--CompendiumLeft);
     top: var(--CompendiumTop);
+    border: 5px solid black;
+
 }
 
 .compendium .compendiumMonkey{
-    width:0;
-    height: 0;
+    width:128px;
+    height: 128px;
     background-color: antiquewhite;
-    background-image: url(../../images/monkey-basic.png);
-    background-size: 100%;
+    background-image: url(../../images/monkeys.png);
+    background-size: 3200%;
     image-rendering: pixelated;
+    background-position: 0px 0px;
 }
 
 body{

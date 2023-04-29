@@ -4,7 +4,7 @@ body{
 
 .gamePage{
     background-color: aliceblue;
-    height: calc(100% - 52.5px);
+    height: calc(100% - 20px);
     overflow: hidden;
 }
 
@@ -117,25 +117,67 @@ body{
     width: 100%;
 }
 
-.widgets .widget {
+.widget {
     width: 64px;
     height: 64px;
     background: grey;
-    
+    background-image: url(../images/widget_icons.png);
 }
 
-.widgets .widget:hover {
+.widget:hover {
     filter: brightness(1.1);
     cursor: pointer;
     image-rendering: pixelated;
 }
 
 .widget.settings{
-    background-image: url(../images/widget_icons.png);
     background-position: -64px 0px;
 }
 
-.widget.compendium{
-    background-image: url(../images/widget_icons.png);
+.widget.compendiumIcon{
     background-position: 0px 0px;
+}
+
+.widget.compendiumExit{
+    background-position: -128px 0px;
+}
+/*COMPENDIUM*/
+
+.compendiumBackground{
+    width: 100vw;
+    height: calc(100vh - 20px);
+    background-color: antiquewhite;
+    background-image: url(../images/compendium_background.png);
+    background-size: 100% 100%;
+    position: relative;
+}
+.compendium{
+    
+    width: 2000px;
+    height: 2000px;
+    background: grey;
+    background: rgba(168, 168, 168, 0.25);
+    align-items: center;
+    position: relative;
+    left: var(--CompendiumLeft);
+    top: var(--CompendiumTop);
+    border: 5px solid black;
+
+}
+
+.compendium .compendiumMonkey{
+    width:128px;
+    height: 128px;
+    background-color: antiquewhite;
+    background-image: url(../images/monkeys.png);
+    background-size: 3200%;
+    image-rendering: pixelated;
+    background-position: 0px 0px;
+}
+
+.compendiumExit{
+    z-index: 999;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
