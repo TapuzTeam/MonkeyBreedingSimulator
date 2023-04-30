@@ -77,36 +77,39 @@ function waitForJson(){
 }
 
 function monkey(type='basic'){
+    let monkey = monkeysInfo[type] || monkeysInfo['basic']
+
     this.type = type;
+    this.monkeyID = monkey.monkeyID
+
+    this.createMonkeyDIV = function(){
+        let div = document.createElement('div'),
+            pos = monkey.spriteID,
+            row = Math.floor(pos/32),
+            col = pos%32
+        div.classList.add('monkey');
+        div.style.backgroundPosition = `${col * -64} ${row * -64}`
+        div.attributes.type = this.monkeyID
+        document.getElementsByClassName('monkeyColumn')[0].appendChild(div)
+      }
 }
 
 function createMonkey(type){
   monkeys.push(new monkey(type))
 }
 
-function createMonkeyDIV(monkey){
-  let div = document.createElement('div');
-  let pos = monkeysInfo[monkey.type].spriteID;
-  let row = Math.floor(pos/32)
-  let col = pos%32
 
-  div.classList.add('monkey');
-  div.style.backgroundPosition = `${col * -64} ${row * -64}`
-
-  document.getElementsByClassName('monkeyColumn')[0].appendChild(div)
-}
 
 function createMonkeyDIVs(){
   if (createAllMonkeys){
-    for (const [type, attributes] of Object.entries(monkeysInfo)) {
+    for (const [type] of Object.entries(monkeysInfo)) {
+        console.log()
       createMonkey(type)
     }
   }
     monkeys.forEach(monkey => {
-      createMonkeyDIV(monkey);
+      monkey.createMonkeyDIV();
     });
-  
-  
 }
 
 
@@ -126,7 +129,7 @@ $( document ).ready(function() {
       receive: function( event, ui ) {
         removeDraggable($('.draggable, ui-draggable-dragging', $('.monkeyColumn')), false)
         ui.item.remove()
-        console.log('received')
+        //console.log('received')
     },
   }).disableSelection();
   });
@@ -152,26 +155,26 @@ $('.breedingSlot').droppable({
     ctx = ui.draggable
     ctx.css('display','none')
       $(this)
-          setTimeout(() => {
+        setTimeout(() => {
             ctx.css('display','').css('top', '').css('left', '')
-              moveDivs()
-              ui.draggable.addClass('draggable')
-              ctx.css('position','inherit')
-              $('.exists').remove()
-              console.log('removed exists')
-              droppableOrigin.appendChild(ctx[0])
-              $('.exists').removeClass('exists')
+            moveDivs()
+            ui.draggable.addClass('draggable')
+            ctx.css('position','inherit')
+            $('.exists').remove()
+            droppableOrigin.appendChild(ctx[0])
+            $('.exists').removeClass('exists')
 
-              $(".draggable").draggable({
+            slotNum = $('.breedingSlot').index(this);
+            getBreederBySlot(slotNum).addToBreeder(slotNum, ui)  
+                
+            $(".draggable").draggable({
               connectToSortable: '.monkeyColumn',
               cursor: 'pointer',
               cursorAt: {top: 31, left: 31 },
               helper: 'clone',
               zIndex: 1000,
               revert: function(is_valid_drop){
-                console.log(is_valid_drop);
                 if(!is_valid_drop){
-                  console.log("revert triggered");
                   $(this).removeClass("exists");
                   return true;
                } else {
@@ -181,12 +184,14 @@ $('.breedingSlot').droppable({
               scroll: false,
               appendTo: $('.monkeyColumn'),
               start: function(event, ui){
-                $(this).addClass('exists')
+                $(this).addClass('exists');
+                console.log(this)
+                console.log(ui)
+                console.log(ui.helper[0])
+                check = ui.helper[0]
+                getBreederBySlot(ui.helper.slot*1)
               },
-              
             });
-            console.log($('.exists'))
-
           }, 0);
 }})});
 
@@ -203,5 +208,7 @@ function moveDivs(){
 function removeDraggable($item, needsDestroy=true){
   $item.removeClass('draggable').removeClass('ui-draggable').removeClass('ui-draggable-handle')
   if (needsDestroy){$item.draggable('destroy')}
-  console.log('destroyed')
+  //console.log('destroyed')
 }
+
+

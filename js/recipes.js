@@ -159,7 +159,6 @@ function getMonkeyByID(id){
 function createMonkeyRecipe(monkey1_id, monkey2_id){
     let monkey1=getMonkeyByID(monkey1_id);
     let monkey2=getMonkeyByID(monkey2_id);
-
     recipe= {
         parent1:{
             monkeyID: [monkey1.monkeyID],
@@ -172,3 +171,42 @@ function createMonkeyRecipe(monkey1_id, monkey2_id){
     }
     return recipe; 
 }
+
+breeders = [];
+function breeder(){
+    this.id = breeders.length;
+    this.slots = [this.id*2]
+    this.slots.push(this.slots[0]+1)
+    this.slot1;
+    
+    this.slot2;
+    this.output;
+    breeders.push(this)
+
+    this.addToBreeder = function(slotNum, ui){
+        let monkey = getMonkeyByID(ui.draggable[0].attributes.type);
+        ui.draggable[0].slot = slotNum
+        this['slot'+ (slotNum%2+1)] = monkey;
+
+        console.log('added monkey: ' + monkey.monkeyID)
+    }
+    this.removeFromBreeder = function(){
+        console.log('ass')
+    }
+}
+
+
+function getBreederBySlot(slotNum){
+    let curBreeder = breeders.find(function(breed){
+        if (breed.slots.includes(slotNum)) {
+            return true;
+        }
+    })
+    return curBreeder;
+}
+
+
+new breeder()
+new breeder()
+new breeder()
+new breeder()
