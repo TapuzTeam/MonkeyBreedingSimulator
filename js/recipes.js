@@ -109,7 +109,7 @@ function sortMonkeys(){
     sortable.sort(function(a, b) {
         return a[1].spriteID - b[1].spriteID;
     });
-    console.log(sortable)
+    debug(sortable)
 }
 
 
@@ -125,7 +125,7 @@ recipe= {
     },
 }
 
-function checkRecipe(recipe='recipe'){
+function checkRecipe(recipe){
     let check = recipeBook.breeding.find(function(curRecipe){
 
         let p1_in;
@@ -142,14 +142,15 @@ function checkRecipe(recipe='recipe'){
         }
 
         
-        console.log(p1_in, p2_in)
+        //debug(p1_in, p2_in)
         
         if (p1_in && p2_in){
             return true;
             }
         }
     )
-    return check;
+    if (!check){check = 'None'; return check;}
+    else { return check.child}
 }
 
 function getMonkeyByID(id){
@@ -177,21 +178,51 @@ function breeder(){
     this.id = breeders.length;
     this.slots = [this.id*2]
     this.slots.push(this.slots[0]+1)
-    this.slot1;
-    
-    this.slot2;
+    this.slot1 = 'empty';
+    this.slot2 = 'empty';
     this.output;
     breeders.push(this)
 
     this.addToBreeder = function(slotNum, ui){
-        let monkey = getMonkeyByID(ui.draggable[0].attributes.type);
-        ui.draggable[0].slot = slotNum
+        let monkey = getMonkeyByID(ui.draggable[0].getAttribute('monkeyID'));
+        ui.draggable[0].setAttribute('breederSlot', slotNum)
+        test = ui.draggable[0]
         this['slot'+ (slotNum%2+1)] = monkey;
-
-        console.log('added monkey: ' + monkey.monkeyID)
+        this.createMonkeyRecipe()
+        debug(`ADDED: ${monkey.monkeyID} TO BREEDER ${breeders.indexOf(this)}`)
     }
-    this.removeFromBreeder = function(){
-        console.log('ass')
+    this.removeFromBreeder = function(slotNum){
+        debug(`REMOVED:  ${this['slot'+ (slotNum+1)].monkeyID} FROM BREEDER ${breeders.indexOf(this)}`)
+        this['slot'+ (slotNum+1)] = 'empty';
+    }
+
+    this.createMonkeyRecipe = function(){
+        if (this.slot1 == 'empty' || this.slot2 == 'empty'){
+            //debug('No monkeys!');
+            this.recipe= {
+                parent1:{
+                    monkeyID: [],
+                    monkey_type: []
+                },
+                parent2:{
+                    monkeyID: [],
+                    monkey_type: []
+                },
+            }
+            return;
+        }
+        this.recipe= {
+            parent1:{
+                monkeyID: [this.slot1.monkeyID],
+                monkey_type: ['primitive']
+            },
+            parent2:{
+                monkeyID: [this.slot2.monkeyID],
+                monkey_type: ['primitive']
+            },
+        }
+        debug(checkRecipe(this.recipe))
+        return recipe; 
     }
 }
 

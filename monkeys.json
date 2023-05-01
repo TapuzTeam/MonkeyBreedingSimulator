@@ -7,13 +7,13 @@
         "spriteID": 0,
         "monkeyID": "monkey_basic"
     },
-    "blue": {
-        "spriteID": 1,
-        "monkeyID": "monkey_blue"
-    },
     "green": {
-        "spriteID": 2,
+        "spriteID": 1,
         "monkeyID": "monkey_green"
+    },
+    "blue": {
+        "spriteID": 2,
+        "monkeyID": "monkey_blue"
     },
     "yellow": {
         "spriteID": 3,

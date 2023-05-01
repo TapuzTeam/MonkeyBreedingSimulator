@@ -38,7 +38,7 @@ body{
     width: 64px;
     height: 64px;
     position: initial;
-
+    image-rendering: pixelated;
 }
 
 .monkey:hover{

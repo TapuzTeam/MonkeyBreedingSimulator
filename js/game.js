@@ -20,7 +20,6 @@ function setVar(variable, value, location=':root') {
   r.style.setProperty(variable, value);
 }
 
-
 initialize()
 function initialize(){
   monkeys = [];
@@ -45,6 +44,13 @@ function initialize(){
       setTransform();
     }
 } 
+
+
+
+isDebug = true;
+if (isDebug){var debug = console.log.bind(window.console)}
+else {var debug = function(){}}
+
 
 function compendiumSwitch(option = 'open'){
   if (option == 'open'){
@@ -76,10 +82,9 @@ function waitForJson(){
   }
 }
 
-function monkey(type='basic'){
-    let monkey = monkeysInfo[type] || monkeysInfo['basic']
+function monkey(ID){
+    let monkey = getMonkeyByID(ID) || getMonkeyByID('monkey_basic')
 
-    this.type = type;
     this.monkeyID = monkey.monkeyID
 
     this.createMonkeyDIV = function(){
@@ -89,22 +94,24 @@ function monkey(type='basic'){
             col = pos%32
         div.classList.add('monkey');
         div.style.backgroundPosition = `${col * -64} ${row * -64}`
-        div.attributes.type = this.monkeyID
+        div.setAttribute('monkeyID', this.monkeyID)
+        //div.test = this.monkeyID
+
         document.getElementsByClassName('monkeyColumn')[0].appendChild(div)
       }
 }
 
-function createMonkey(type){
-  monkeys.push(new monkey(type))
+function createMonkey(ID){
+  monkeys.push(new monkey(ID))
 }
 
 
 
 function createMonkeyDIVs(){
   if (createAllMonkeys){
-    for (const [type] of Object.entries(monkeysInfo)) {
-        console.log()
-      createMonkey(type)
+    for (const [type, attributes] of Object.entries(monkeysInfo)) {
+        //debug(type, attributes)
+        createMonkey(attributes.monkeyID)
     }
   }
     monkeys.forEach(monkey => {
@@ -129,7 +136,7 @@ $( document ).ready(function() {
       receive: function( event, ui ) {
         removeDraggable($('.draggable, ui-draggable-dragging', $('.monkeyColumn')), false)
         ui.item.remove()
-        //console.log('received')
+        //debug('received')
     },
   }).disableSelection();
   });
@@ -145,7 +152,7 @@ $( document ).ready(function() {
   })
 
   $('.monkeyColumn, .breedingSlot').on('sortupdate',function(){
-  //console.log('updated!');
+  //debug('updated!');
 });
 
 $('.breedingSlot').droppable({
@@ -176,6 +183,8 @@ $('.breedingSlot').droppable({
               revert: function(is_valid_drop){
                 if(!is_valid_drop){
                   $(this).removeClass("exists");
+                  getBreederBySlot(ui.helper[0].getAttribute('breederSlot')*1).addToBreeder(ui.helper[0].getAttribute('breederSlot')*1, ui)  
+
                   return true;
                } else {
                }
@@ -185,11 +194,10 @@ $('.breedingSlot').droppable({
               appendTo: $('.monkeyColumn'),
               start: function(event, ui){
                 $(this).addClass('exists');
-                console.log(this)
-                console.log(ui)
-                console.log(ui.helper[0])
+                debug(ui.helper[0].attributes)
                 check = ui.helper[0]
-                getBreederBySlot(ui.helper.slot*1)
+                //debug('slot'+(ui.helper[0].getAttribute('breederSlot')*1%2+1) + ': ', getBreederBySlot(ui.helper[0].getAttribute('breederSlot')*1)[['slot'+(ui.helper[0].getAttribute('breederSlot')*1%2+1)]])
+                getBreederBySlot(ui.helper[0].getAttribute('breederSlot')*1).removeFromBreeder(ui.helper[0].getAttribute('breederSlot')%2)
               },
             });
           }, 0);
@@ -208,7 +216,7 @@ function moveDivs(){
 function removeDraggable($item, needsDestroy=true){
   $item.removeClass('draggable').removeClass('ui-draggable').removeClass('ui-draggable-handle')
   if (needsDestroy){$item.draggable('destroy')}
-  //console.log('destroyed')
+  //debug('destroyed')
 }
 
 
