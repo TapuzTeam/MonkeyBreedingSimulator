@@ -1,7 +1,27 @@
 {
     "cosmic": {
-        "spriteID": 64,
+        "spriteID": 96,
         "monkeyID": "monkey_cosmic"
+    },
+    "annoyed": {
+        "spriteID": 64,
+        "monkeyID": "monkey_annoyed"
+    },
+    "angry": {
+        "spriteID": 65,
+        "monkeyID": "monkey_angry"
+    },
+    "enraged": {
+        "spriteID": 66,
+        "monkeyID": "monkey_enraged"
+    },
+    "furious": {
+        "spriteID": 67,
+        "monkeyID": "monkey_furious"
+    },
+    "violent": {
+        "spriteID": 68,
+        "monkeyID": "monkey_violent"
     },
     "basic": {
         "spriteID": 0,
@@ -146,5 +166,45 @@
     "allSeer": {
         "spriteID": 35,
         "monkeyID": "monkey_allseer"
-    }
+    },
+    "clown": {
+        "spriteID": 36,
+        "monkeyID": "monkey_clown"
+    },
+    "thug": {
+        "spriteID": 37,
+        "monkeyID": "monkey_thug"
+    },
+    "cool": {
+        "spriteID": 38,
+        "monkeyID": "monkey_cool"
+    },
+    "blurry": {
+        "spriteID": 39,
+        "monkeyID": "monkey_blurry"
+    },
+    "neon": {
+        "spriteID": 40,
+        "monkeyID": "monkey_neon"
+    },
+    "metallic": {
+        "spriteID": 41,
+        "monkeyID": "monkey_metallic"
+    },
+    "robot": {
+        "spriteID": 42,
+        "monkeyID": "monkey_robot"
+    },
+    "hollow": {
+        "spriteID": 43,
+        "monkeyID": "monkey_hollow"
+    },
+    "diamondback": {
+        "spriteID": 44,
+        "monkeyID": "monkey_diamondback"
+    },
+    "ironfist": {
+        "spriteID": 45,
+        "monkeyID": "monkey_ironfist"
+    }  
 }

@@ -1,3 +1,6 @@
+@import url('https://fonts.cdnfonts.com/css/minecraft-3');
+
+
 .compendiumBackground{
     width: 100vw;
     height: 100vh;
@@ -38,3 +41,50 @@ body{
     transform: scale(1) translate(0px, 0px);
     cursor: grab;
   }
+
+
+  /*START BOOk*/
+
+.book {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.book .page {
+    width: calc(1920px - 480px);
+    height: 100%;
+    background: rgba(54, 224, 38, 0.25);
+}
+
+.book .bookTabs {
+    width: 480px;
+    height: 100%;
+    background-color: rgba(219 7 7 / 25%);
+}
+
+.bookTabs .bookTab {
+    width: 100%;
+    height: 66px;
+    background: rgba(7, 92, 219, 0.25);
+    border: 1px solid black;
+    border-collapse: collapse;
+    cursor: pointer;
+    font-family: 'Minecraft', sans-serif;
+    font-size: 35px;
+    line-height: 70px;
+    display: flex;
+}
+
+.bookTabs .bookTab:hover {
+    filter: brightness(0.5);
+    transform: translate(-20px);
+}
+
+.bookTab .monkeyIcon{
+    width: 64px;
+    height: 64px;
+    margin-right: 10px;
+    background-image: url(../../images/monkeys.png);
+    
+}
