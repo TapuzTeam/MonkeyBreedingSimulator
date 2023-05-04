@@ -88,3 +88,33 @@ body{
     background-image: url(../../images/monkeys.png);
     
 }
+
+.bookTabs .widgets{
+    background: green;
+    width: 100%;
+}
+
+.widget {
+    width: 64px;
+    height: 64px;
+    background: grey;
+    background-image: url(../../images/widget_icons.png);
+}
+
+.widget:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+    image-rendering: pixelated;
+}
+
+.widget.settings{
+    background-position: -64px 0px;
+}
+
+.widget.compendiumIcon{
+    background-position: 0px 0px;
+}
+
+.widget.compendiumExit{
+    background-position: -128px 0px;
+}

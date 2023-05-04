@@ -206,5 +206,21 @@
     "ironfist": {
         "spriteID": 45,
         "monkeyID": "monkey_ironfist"
-    }  
+    },
+    "horned": {
+        "spriteID": 46,
+        "monkeyID": "monkey_horned"
+    },
+    "pixie": {
+        "spriteID": 47,
+        "monkeyID": "monkey_pixie"
+    },
+    "stoneskin": {
+        "spriteID": 48,
+        "monkeyID": "monkey_stoneskin"
+    },
+    "phoenix": {
+        "spriteID": 49,
+        "monkeyID": "monkey_phoenix"
+    }
 }
