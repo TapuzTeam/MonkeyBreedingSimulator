@@ -120,8 +120,12 @@ function createMonkeyDIVs(){
 }
 
 
-
-
+/*
+setInterval(() => {
+  if(document.hasFocus()){
+  console.log('focused')}
+}, 1000);
+*/
 
 $( document ).ready(function() {
   //adds Jquery.exists()
