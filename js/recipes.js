@@ -109,7 +109,15 @@ function sortMonkeys(){
     sortable.sort(function(a, b) {
         return a[1].spriteID - b[1].spriteID;
     });
-    debug(sortable)
+    let newsort = {};
+    sortable.forEach(monkey => {
+        newsort[monkey[0]] = getMonkeyByID(monkey[1].monkeyID)
+    });
+    return newsort
+}
+
+function getSortedJSON(){
+    return JSON.stringify(sortMonkeys())
 }
 
 
@@ -155,6 +163,10 @@ function checkRecipe(recipe){
 
 function getMonkeyByID(id){
     return Object.values(monkeysInfo).find((monkey) => monkey.monkeyID==id) || monkeysInfo['basic']
+}
+
+function getMonkeysBySeries(series){
+    return Object.values(monkeysInfo).filter((monkey) => monkey.series==series)
 }
 
 function createMonkeyRecipe(monkey1_id, monkey2_id){

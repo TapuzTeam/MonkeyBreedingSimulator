@@ -86,8 +86,9 @@ function monkey(ID){
     let monkey = getMonkeyByID(ID) || getMonkeyByID('monkey_basic')
 
     this.monkeyID = monkey.monkeyID
+    if (typeof monkey.series !== 'undefined'){this.series=monkey.series}
 
-    this.createMonkeyDIV = function(){
+    this.createMonkeyDIV = function(parent=['monkeyColumn', 0]){
         let div = document.createElement('div'),
             pos = monkey.spriteID,
             row = Math.floor(pos/32),
@@ -97,7 +98,9 @@ function monkey(ID){
         div.setAttribute('monkeyID', this.monkeyID)
         //div.test = this.monkeyID
 
-        document.getElementsByClassName('monkeyColumn')[0].appendChild(div)
+        document.getElementsByClassName(parent[0])[parent[1]].appendChild(div)
+
+        //document.getElementsByClassName('monkeyColumn')[0].appendChild(div)
       }
 }
 
@@ -123,7 +126,7 @@ function createMonkeyDIVs(){
 /*
 setInterval(() => {
   if(document.hasFocus()){
-  console.log('focused')}
+  debug('focused')}
 }, 1000);
 */
 

@@ -5,23 +5,58 @@
     },
     "annoyed": {
         "spriteID": 64,
-        "monkeyID": "monkey_annoyed"
+        "monkeyID": "monkey_annoyed",
+        "series": "anger"
     },
     "angry": {
         "spriteID": 65,
-        "monkeyID": "monkey_angry"
+        "monkeyID": "monkey_angry",
+        "series": "anger"
     },
     "enraged": {
         "spriteID": 66,
-        "monkeyID": "monkey_enraged"
+        "monkeyID": "monkey_enraged",
+        "series": "anger"
     },
     "furious": {
         "spriteID": 67,
-        "monkeyID": "monkey_furious"
+        "monkeyID": "monkey_furious",
+        "series": "anger"
     },
     "violent": {
         "spriteID": 68,
-        "monkeyID": "monkey_violent"
+        "monkeyID": "monkey_violent",
+        "series": "anger"
+    },
+    "star gold": {
+        "spriteID": 97,
+        "monkeyID": "monkey_stargold",
+        "series": "star"
+    },
+    "star malachite": {
+        "spriteID": 98,
+        "monkeyID": "monkey_starmalachite",
+        "series": "star"
+    },
+    "star cinnabar": {
+        "spriteID": 99,
+        "monkeyID": "monkey_starcinnabar",
+        "series": "star"
+    },
+    "star bronze": {
+        "spriteID": 100,
+        "monkeyID": "monkey_starbronze",
+        "series": "star"
+    },
+    "star lead": {
+        "spriteID": 101,
+        "monkeyID": "monkey_starlead",
+        "series": "star"
+    },
+    "star iron": {
+        "spriteID": 102,
+        "monkeyID": "monkey_stariron",
+        "series": "star"
     },
     "basic": {
         "spriteID": 0,
@@ -222,5 +257,17 @@
     "phoenix": {
         "spriteID": 49,
         "monkeyID": "monkey_phoenix"
+    },
+    "gunpowder": {
+        "spriteID": 50,
+        "monkeyID": "monkey_gunpowder"
+    },
+    "cigarette": {
+        "spriteID": 51,
+        "monkeyID": "monkey_cigarette"
+    },
+    "hotheaded": {
+        "spriteID": 52,
+        "monkeyID": "monkey_hotheaded"
     }
 }
