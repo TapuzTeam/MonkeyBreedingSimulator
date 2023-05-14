@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/jquery-ui.css">
+    <link rel="stylesheet" href="memory.css">
+    <title>Chimp Memory Test!</title>
+</head>
+<body>
+    <button onclick="mode = 'onpress'; resetGame()">Hide on click</button>
+    <button onclick="mode = 'timed'; resetGame()">Hide after 2s</button>
+    <div class="memoryGame container p-0">
+        <div class="row">
+            <div class="col memoryBox"></div>
+            <div class="col memoryBox"></div>
+            <div class="col memoryBox"></div>
+            <div class="col memoryBox"></div>
+            <div class="col memoryBox"></div>
+            <div class="col memoryBox"></div>
+            <div class="col memoryBox"></div>
+            <div class="col memoryBox"></div>
+            <div class="col memoryBox"></div>
+            <div class="col memoryBox"></div>
+            <div class="col memoryBox"></div>
+            <div class="col memoryBox"></div>
+        </div>
+    </div>
+</body>
+<script src="../../js/bootstrap.bundle.min.js"></script>
+<script src="../../js/jquery-3.6.4.min.js"></script>
+<script src="../../js/jquery-ui.min.js"></script>
+<script src="memory.js"></script>
+</html>
